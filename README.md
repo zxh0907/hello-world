@@ -1,4 +1,5 @@
 hello-world
 ===========
 
-my first respository
+Hi,all
+I'm here. I like Node.js, Jquery, etc...
