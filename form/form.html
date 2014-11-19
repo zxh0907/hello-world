@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>hello world!</title>
+	<style type="text/css">
+	*{margin:0; padding:0;}
+	body{font-size:12px; line-height:20px; color:#666; background:#f5f5f5; text-align: center; padding:20px;}
+	h1{padding:20px 0;}
+	.red,.err{color:red;}
+	.table{text-align: left;}
+	.table th,.table td{padding:7px 3px;}
+	.table th{text-align: right; vertical-align: top; width:100px;}
+	.formInfo{color:#999; font-size:12px;}
+	.iptxt{border:1px solid #ccc; padding:3px 5px;}
+	.btn{border:1px solid #ccc; border-radius:5px; padding:7px 15px; cursor:pointer;}
+	.infoForm{width:600px; margin: 0 auto; border:1px solid #ccc; border-radius:5px;padding:30px 10px; background:#fff;}
+	.infoForm .iptxt{width:300px;}
+	</style>
+
+</head>
+<body>
+	<h1>表单验证</h1>
+	<form id="infoForm" class="infoForm" method="get" action="">
+		<table cellpadding="0" cellspacing="0" class="table">
+			<tbody>
+				<tr>
+					<th><span class="red">*</span> <label for="iptTitle">标题：</label></th>
+					<td><input id="iptTitle" type="text" value="" class="iptxt" maxlength="100"/> <span id="iptTitle_err" class="err"></span>
+						<p class="formInfo">最长不得超过50个汉字</p>
+					</td>
+				</tr>
+				<tr>
+					<th><span class="red">*</span> <label for="selType">类型：</label></th>
+					<td><select id="selType">
+						<option value="">请选择</option>
+						<option value="1">帐号问题</option>
+						<option value="2">违规问题</option>
+						<select> <span id="selType_err" class="err"></span></td>
+				</tr>
+				<tr>
+					<th><span class="red">*</span> <label for="iptUrl">相关URL：</label></th>
+					<td><input id="iptUrl" type="text" value=""  class="iptxt"/> <span id="iptUrl_err" class="err"></span>
+						<p class="formInfo">格式：http://xx.xxx.xx/xxx</p>
+					</td>
+				</tr>
+				<tr>
+					<th><span class="red">*</span> <label for="txtCnt">内容：</label></th>
+					<td><textarea id="txtCnt"  class="iptxt" rows="5" maxlength="1000"></textarea> <span id="txtCnt_err" class="err"></span>
+						<p class="formInfo">最长不超过500个汉字</p>
+				</tr>
+				<tr>
+					<th><label for="iptEmail">Email：</label></th>
+					<td><input id="iptEmail" type="text" value=""  class="iptxt"/> <span id="iptEmail_err" class="err"></span></td>
+				</tr>
+				<tr>
+					<th><label for="iptPhone">联系电话：</label></th>
+					<td><input id="iptPhone" type="text" value=""  class="iptxt"/> <span id="iptPhone_err" class="err"></span></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td><button type="submit" class="btn">提交</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	<script type="text/javascript" src="../jquery-1.11.1.min.js"/></script>
+	<script type="text/javascript" src="form.js"></script>
+	<script type="text/javascript">
+	function initForm(){
+		$("#infoForm").vaildForm({
+			fields: {
+	            "#iptTitle":{
+	                required:true,
+	                regExp:"len",   //正则表达式(str)|| function
+	                emptyMsg:"请输入标题",
+	                longMsg: "标题不能超出50个汉字",    //超出长度时message
+	                placeholder: "标题内容"     //默认值
+	            },
+	            "#selType":{
+	                required:true,
+	                emptyMsg:"请选择分类"
+	            },
+	            "#iptUrl":{
+	                required:true,
+	                regExp:"comUrl",
+	                emptyMsg:"请输入URL",
+	                errMsg:"URL格式不正确"
+	            },
+	            "#txtCnt":{
+	                required:true,
+	                regExp:"len",   //正则表达式(str)|| function
+	                emptyMsg:"请输入内容",
+	                longMsg: "内容不能超出500个汉字"
+	            },
+	            "#iptEmail":{
+	                regExp:"email",
+	                errMsg:"email格式不正确"
+	            },
+	            "#iptPhone":{
+	                regExp:"phone",
+	                errMsg:"电话格式不正确"
+	            }
+	        },
+	        submitCbk: function(rlt){
+	        	console.log(rlt);
+
+	        }
+        });
+	}
+	(function(){
+		initForm();
+	})();
+	</script>
+</body>
+</html>
