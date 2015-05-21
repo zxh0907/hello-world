@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>日历</title>
+<style type="text/css">
+.calendar{font-size:12px; border:2px solid #ddd; padding:10px; width:260px;color:#666; font-family:Arial;}
+.calendar .calendar-top{border-bottom:1px solid #999;  text-align:center; padding:0 20px 10px; position:relative;}
+.calendar select{padding:3px;}
+.calendar a{text-decoration: none; color:#666;}
+.calendar a.c-btn{padding:5px; border:1px solid #ddd; background-color:#f5f5f5;}
+.calendar a.c-btn:hover{background-color:#e5e5e5; color:#333;}
+.calendar .calendar-top .calendar-btn-prev{position:absolute; top:0;left:0;}
+.calendar .calendar-top .calendar-btn-next{position:absolute; top:0;right:0;}
+.calendar .calendar-year{}
+.calendar .calendar-month{margin:0 10px;}
+.calendar-table th{padding:10px 0;}
+.calendar-table td{border-top:1px solid #ddd; padding:0 1px;}
+.calendar-table .calendar-tb-weekend,.calendar-table .calendar-tb-weekend a{color:#cc0000;}
+.calendar-table a{width:35px; padding:9px 0; display:inline-block; font-size:14px; text-align: center;}
+.calendar-table a:hover,.calendar-table a.on{width:31px; border:2px solid #aaa; padding:7px 0;}
+.calendar-table a.calendar-defDay{background-color:#aaa; color:#fff;}
+</style>
+<script type="text/javascript" src="../jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../common.js"></script>
+</head>
+<body>
+<div id="calendarLayer"></div>
+	
+<script type="text/javascript" src="calendar.js"></script>
+<script type="text/javascript">
+var rili = new calendar("calendarLayer", {
+	onShow: function(year, month){
+		var layer = this.targetO;
+		var allDays = layer.find("a.calendar-day");
+		
+	}
+});
+</script>
+</body>
+</html>

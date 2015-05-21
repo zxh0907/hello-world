@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>上传图片</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<script type="text/javascript" compress>
+var form_id = '7';
+var checkStatus = '-1';
+var pidenc = '';
+var picIdFlag = '';
+</script>
+</head>
+
+<body class="upImgPage">
+
+<div id="main" class="upImgForm">
+
+		<div class="upInfo">请选择上传本地的图片，大小不超过3M，并且为.jpg、.gif、.png或.bmp格式。</div>
+	<form action="d.html" method="post" enctype="multipart/form-data" name="upload" target="ifr" id="formUpImg">
+		<div id="iptUpImgArea">
+			<input id="iptImage" type="file" size="30" name="pic" onchange="upImg.checkPic(this);"/>
+        </div>  		
+		<div id="info" class="err"></div>
+        <input type="hidden" value="upImg.showResult" name="callback"/>
+	</form>
+    <div class="previewArea" id="previewArea">
+
+    </div>
+    <div class="btnArea">
+        <input type="button" value="确定" class="btn" id="btnOk"/>&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" value="取消" class="btn" id="btnCancel">
+        <input type="hidden" name="is_submit" value="1">
+    </div>
+	<iframe id="ifr" name="ifr" style="display:none;"></iframe>
+</div>
+
+<div id="response" class="response" style="display:none;">
+    <p id="responseData" class="respCnt"></p>		
+	<div class="btnArea">
+		<input type="button" value="确定" class="btn" id="btnCfm"/>
+	</div>	
+</div>
+
+<script type="text/javascript" src="uploadimg.js"></script>
+</body>
+</html>
