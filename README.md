@@ -1,5 +1,4 @@
 hello-world
 ===========
 
-Hi,all
-I'm here. I like Node.js, Jquery, etc...
+早几年前写过的一些JS组件，当归由同事帮我提交。
