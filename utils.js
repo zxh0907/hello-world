@@ -134,7 +134,7 @@ export const printHtml = id => {
  * @type {Object}
  */
 const cookie = {
-  get: function(key: string) {
+  get: function(key) {
     try {
       var a,
         reg = new RegExp('(^| )' + key + '=([^;]*)(;|$)');
@@ -147,9 +147,9 @@ const cookie = {
       return '';
     }
   },
-  set: function(key: string, val: any, options: any) {
+  set: function(key, val, options) {
     options = options || {};
-    let expires: Date | undefined;
+    let expires;
 
     if (typeof options.expires === 'number') {
       expires = new Date(+new Date() + options.expires);
@@ -161,14 +161,13 @@ const cookie = {
         '=' +
         escape(val) +
         (expires ? ';expires=' + expires.toUTCString() : '') +
-        //+ (expires ? ";expires=" + expires.toGMTString() : "")
         ';path=/' +
         (options.domain ? '; domain=' + options.domain : '');
     } catch (e) {
       throw e;
     }
   },
-  del(name: string) {
+  del(name) {
     var exp = new Date();
     exp.setTime(exp.getTime() - 1);
     var cval = cookie.get(name);
